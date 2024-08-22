@@ -1,0 +1,29 @@
+What is a thread?
+A thread is a lightweight sub-process, the smallest unit of processing. It is a separate path of execution.
+Threads are independent, if an exception occurs in one thread, it doesn't affect other threads. It shares a common memory area.
+
+What is a job in thread?
+A thread is a job that is executed by the CPU. When a thread is created, a job is assigned to it.
+The job is nothing but the code that is to be executed by the thread.
+
+What is a process?
+A process is a program in execution. A process is an independent entity to which system resources (CPU time, memory, etc.) are allocated.
+
+What is the difference between process and thread?
+A process is a program in execution. A thread is a lightweight sub-process, the smallest unit of processing.
+
+What is the difference between process and thread in Java?
+In Java, a process is a program in execution. A thread is a lightweight sub-process, the smallest unit of processing.
+
+What is the difference between process and job?
+A process is a program in execution. A job is a task that is executed by a thread.
+
+What is the difference between thread and job?
+A thread is a lightweight sub-process, the smallest unit of processing. A job is a task that is executed by a thread.
+
+What is the difference between thread and task?
+A thread is a lightweight sub-process, the smallest unit of processing. A task is a job that is executed by a thread.
+
+A job is a task or a task is a job? Or job and task are the same?
+A job is a task that is executed by a thread. A task is a job that is executed by a thread. Job and task are the same.
+

@@ -1,0 +1,21 @@
+Define a thread in java?
+
+1. By extending Thread class
+2. By implementing Runnable interface
+//3. By using Executor framework
+//4. By using Callable and Future
+
+
+By extending Thread class:
+1. Create a class that extends the Thread class.
+2. Override the run() method.
+3. Inside the run() method, we define the task/job that is to be executed by the thread. Inside run() method,
+   the code is called the JOB of the thread.
+4. To start the thread, Create an object of the class and call the start() method.
+4. The start() method creates a new thread and calls the run() method.
+5. The run() method contains the code that is executed by the thread.
+6. The thread is terminated when the run() method completes.
+7. The thread can be started only once. If you try to start the thread again, it will throw an IllegalThreadStateException.
+8. The thread is created and managed by the JVM.
+
+

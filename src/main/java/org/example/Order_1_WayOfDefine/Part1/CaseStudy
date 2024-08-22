@@ -1,0 +1,69 @@
+Case-1 Thread Scheduler in Java:
+1. Thread Scheduler in Java is the part of the JVM that decides which thread should run.
+2. It is responsible for scheduling the threads. That is, if there are multiple threads ready to run,
+   in which order they should run is decided by the thread scheduler.
+3. We can't expect the exact algorithm followed by the thread scheduler.
+   It is varied from one JVM to another JVM. Hence, we can't predict which thread will run first and expected output.
+   So the output of the program that involves multiple threads is unpredictable. But we can expect the possible outputs.
+4. The thread scheduler uses the thread priorities to decide which thread should run.
+5. The thread scheduler uses preemptive or time-slicing scheduling to schedule the threads.
+6. Preemptive scheduling: In preemptive scheduling, the thread with the highest priority is executed.
+7. Time-slicing scheduling: In time-slicing scheduling, each thread is executed for a short period of time.
+8. The thread scheduler uses the thread priorities to decide which thread should run.
+
+
+
+Case-2 Difference between t.start() and t.run() method:
+1. t.start() method is used to start the thread. It creates a new thread and calls the run() method.
+2. t.run() method is used to call the run() method. It doesn't create a new thread. run() method will treated as a normal method call.
+   The run() method will be executed by the current/main thread, not by the new thread.
+
+
+Case-3 start() method:
+1. The start() method is used to start the thread.
+2. Register the thread with the thread scheduler.
+3. Perform other startup activities.
+4. The start() method internally calls the run() method.
+5. Without calling the start() method, there is no way to start a new thread in java.
+
+
+Case-4 overloading of run() method:
+1. We can overload the run() method.
+2. The overloaded run() method will be treated as a normal method call.
+3. The overloaded run() method will be executed by the current/main thread, not by the new thread.
+4. Thread class start() method internally calls the run() method. So, the overloaded run() method will not be executed by the new thread.
+
+
+Case-5 not overriding run() method:
+1. If we don't override the run() method, thread class run() method will be executed.
+2. The thread class run() method doesn't do anything. It is an empty implementation.
+
+
+Case-6 overriding start() method:
+1. We can override the start() method.
+2. If we override the start() method, it will be treated as a normal method call.
+3. The overridden start() method will be executed by the current/main thread, not by the new thread.
+
+
+Case-7 overriding start() method with super.start():
+1. If we override the start() method and call super.start(), it will start the thread.
+2. The overridden start() method will be executed by the main thread. But super.start() will start the new thread.
+3. The run() method will be executed by the new thread.
+4. So any code written in here will be executed by main thread.
+
+
+Thread life cycle:
+1. New: The thread is in the new state before starting the thread. The thread is created but not started.
+2. Runnable: The thread is in the runnable state after calling the start() method.
+3. Running: The thread is in the running state when the thread scheduler selects the thread to run.
+   If thread scheduler allocates the processor to the thread, the thread is in the running state.
+4. Blocked: The thread is in the blocked state when the thread is waiting for the resource.
+5. Dead: The thread is in the dead state when the run() method completes.
+
+
+Case-8 start the thread multiple times:
+1. After starting a thread, if we try to start the same thread again, it will throw an IllegalThreadStateException.
+2. So it's impossible to the thread multiple times. The thread can be started only once.
+   If you try to start the thread again or multiple times, it will throw an IllegalThreadStateException.
+
+
