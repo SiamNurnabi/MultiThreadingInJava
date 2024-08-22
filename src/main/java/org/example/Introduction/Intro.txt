@@ -1,0 +1,43 @@
+There are 2 types of Multitasking
+1. Process-based Multitasking
+2. Thread-based Multitasking
+
+Process-based Multitasking:
+1. In Process-based Multitasking, multiple processes run concurrently.
+2. Each process has its own memory space.
+3. Each process is independent of other processes.
+4. If one process is terminated, it doesn't affect other processes.
+5. Process-based multitasking is heavyweight.
+6. Process creation is time-consuming and resource-intensive.
+7. Process switching is time-consuming.
+8. Example: Running multiple applications on a computer.
+
+Thread-based Multitasking:
+1. In Thread-based Multitasking, multiple threads run concurrently.
+2. Threads share the same memory space.
+3. Threads are lightweight compared to processes.
+4. Threads are dependent on each other.
+5. If an exception occurs in one thread, it affects other threads.
+6. Thread creation is less time-consuming and resource-intensive.
+7. Thread switching is fast.
+8. Example: Running multiple applications on a computer.
+
+What is the difference between Process-based Multitasking and Thread-based Multitasking?
+In Process-based Multitasking, multiple processes run concurrently. Each process has its own memory space. Each process is independent of other processes.
+If one process is terminated, it doesn't affect other processes. Process-based multitasking is heavyweight.
+Process creation is time-consuming and resource-intensive. Process switching is time-consuming.
+In Thread-based Multitasking, multiple threads run concurrently. Threads share the same memory space. Threads are lightweight compared to processes.
+Threads are dependent on each other. If an exception occurs in one thread, it affects other threads. Thread creation is less time-consuming and resource-intensive.
+Thread switching is fast.
+
+What is the difference between Process-based Multitasking and Thread-based Multitasking in Java?
+In Java, Process-based Multitasking is achieved by running multiple Java programs. Each Java program runs in its own JVM process.
+In Thread-based Multitasking, multiple threads run concurrently within the same Java program. Threads share the same memory space.
+
+What is the difference between Process-based Multitasking and Thread-based Multitasking in Operating System?
+In Operating System, Process-based Multitasking is achieved by running multiple processes concurrently. Each process has its own memory space.
+In Thread-based Multitasking, multiple threads run concurrently within the same process. Threads share the same memory space.
+
+
+
+
