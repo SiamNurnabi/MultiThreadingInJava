@@ -1,0 +1,8 @@
+Thread t = new Thread();
+Thread t = new Thread(Runnable r);
+Thread t = new Thread(String name);
+Thread t = new Thread(Runnable r, String name);  // Create a thread with a name
+Thread t = new Thread(ThreadGroup group, String name); // Create a thread with a thread group and a name
+Thread t = new Thread(ThreadGroup group, Runnable r); // Create a thread with a thread group and a runnable object
+Thread t = new Thread(ThreadGroup group, Runnable r, String name);
+Thread t = new Thread(ThreadGroup group, Runnable r, String name, long stackSize); // Create a thread with a thread group, a runnable object, a name, and a stack size

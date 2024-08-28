@@ -6,7 +6,15 @@ Define a thread in java?
 //4. By using Callable and Future
 
 
-By extending Thread class:
+
+
+***Which is the best way to define a thread in java? By extending Thread class or By implementing Runnable interface?
+Implementing Runnable interface is the best way to define a thread in java. Because:
+1. Java doesn't support multiple inheritances.
+   - If we extend the Thread class, we can't extend any other class.
+   - If we implement the Runnable interface, we can extend any other class. We won't miss the benefits of inheritance.
+
+***By extending Thread class:
 1. Create a class that extends the Thread class.
 2. Override the run() method.
 3. Inside the run() method, we define the task/job that is to be executed by the thread. Inside run() method,
@@ -18,4 +26,32 @@ By extending Thread class:
 7. The thread can be started only once. If you try to start the thread again, it will throw an IllegalThreadStateException.
 8. The thread is created and managed by the JVM.
 
+***By implementing Runnable interface:
+1. Create a class that implements the Runnable interface.
+2. Implement the run() method.
+3. Inside the run() method, we define the task/job that is to be executed by the thread. Inside run() method,
+   the code is called the JOB of the thread.
+4. To start the thread, Create an object of the class and pass the object to the Thread class constructor.
+5. The Thread class constructor takes the object of the class that implements the Runnable interface.
+6. If we pass the object of the class that implements the Runnable interface to the Thread class constructor,
+   the Thread class object will call the run() method of the class that implements the Runnable interface.
+7. If we don't pass the object of the class that implements the Runnable interface to the Thread class constructor,
+   the Thread class object will call the run() method of the Thread class.
+8. The thread is terminated when the run() method completes.
 
+
+Another way to define a thread(Not recommended):
+1. Create a class that extends the Thread class.
+2. Override the run() method.
+3. Create an instance of Thread class.
+4. Pass the object of the class that extends the Thread class to the Thread class constructor.
+The Thread class constructor takes the object of the class that extends the Thread class. Thread class implements the Runnable interface.
+So that object will also be treated as a Runnable object.
+5. Call the start() method on the Thread class object.
+
+
+Getting and setting the thread name:
+Every thread in java has a name. The name of the thread is set by the JVM. We can get and set the name of the thread.
+1. To get the name of the thread, call the currentThread() method on the Thread class.
+   It returns the reference of the current thread. Call the getName() method on the current thread object.
+2. To set the name of the thread, call the setName() method on the current thread object.

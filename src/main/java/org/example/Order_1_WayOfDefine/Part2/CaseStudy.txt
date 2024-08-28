@@ -1,0 +1,30 @@
+MyRunnable r = new MyRunnable();
+Thread t1 = new Thread();
+Thread t2 = new Thread(r);
+
+
+Case-1 t1.start():
+1. The start() will start the thread.
+2. Thread class start() method internally calls the run() method.
+   Which have empty implementation. So, nothing will happen.
+
+
+Case-2 t1.run():
+1. No new thread will be created.
+   The Thread class run() method will be executed by the current thread like a normal method call.
+
+
+Case-3 t2.start():
+1. New thread will be created.
+2. The run() method of MyRunnable class will be executed by the new thread.
+
+Case-4 t2.run():
+1. No new thread will be created.
+   The run() method of MyRunnable class will be executed by the current thread like a normal method call.
+
+Case-5 r.start():
+1. Compilation error. The start() method is not available in the MyRunnable class.
+
+Case-6 r.run():
+1. No new thread will be created.
+   The run() method of MyRunnable class will be executed by the current thread like a normal method call.
