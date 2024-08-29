@@ -1,0 +1,64 @@
+
+*****************************join() method********************************
+
+public final void join() throws InterruptedException  // It will wait until the thread on which it is called is dead.
+public final void join(long millis) throws InterruptedException  // It will wait for the specified time in milliseconds.
+public final void join(long millis, int nanos) throws InterruptedException  // It will wait for the specified time in milliseconds and nanoseconds.
+
+why millis is long and nanos is int?
+after millis, we can have 999999 nanoseconds. So, we need to have long for millis and int for nanos.
+
+
+why join method is final?
+The join() method is a final method. It is declared as final in the Thread class. It is declared as final because it is a native method.
+The join() method is a native method. It is implemented in the native language like C or C++. The native method is declared as final in Java.
+
+
+
+                                                Scope of join method:
+-- We can prevent thread execution by using the join() method. The join() method is a non-static method of the Thread class.
+It is used to pause the currently executing thread until the thread on which it is called is dead.
+If the thread on which join() method is called is dead then the currently executing thread will continue its execution.
+
+-- If the thread on which join() method is called is not dead then the currently executing thread will wait until the thread is dead.
+The currently executing thread will not continue its execution until the thread is dead.
+
+-- If the thread on which join() method is called is dead then the currently executing thread will continue its execution.
+The currently executing thread will not wait.
+
+// join method
+The join() method in Java is used to pause the execution of the current thread until the thread on which join() was called has finished executing.
+This is useful when you want one thread to wait for another to complete before proceeding.
+
+Case-1:
+If we want to wait until completing some other thread then we should go for join method. For example:
+If a thread t1 wants to wait until completing t2, then t1 has to call t2.join.
+If t1 executes t2.join(), then t1 will be enter into waiting state until t2 complete. Once t2 completes, t1 can continue its execution.
+
+Example:
+
+      Venue Fixing          Wedding Cards           Wedding Cards
+      Activity              Printing                Distribution
+      (t1)                  (t2)                    (t3)
+       .                     .                       .
+       .                     .                       .
+       .                     .                       .
+                            t1.join()               t2.join()
+
+Here t2 will wait until t1 completes. t3 will wait until t2 completes.
+
+
+Case-2:
+Every join method throws InterruptedException which is a checked exception. So we have to handle it using try-catch block or throws keyword.
+If we don't handle it, the program will not compile. It will throw a compile-time error.
+
+
+Case-3:
+If main thread calls join method on child thread and child thread calls join method on main thread, then the program will be in deadlock state.
+
+
+Case-4:
+If a thread calls join method on the same thread, then the program will be in deadlock state.
+In this case, the thread will wait for itself to complete which is not possible.
+
+
