@@ -1,0 +1,7 @@
+Thread life cycle:
+1. New: The thread is in the new state before starting the thread. The thread is created but not started.
+2. Runnable: The thread is in the runnable state after calling the start() method.
+3. Running: The thread is in the running state when the thread scheduler selects the thread to run.
+   If thread scheduler allocates the processor to the thread, the thread is in the running state.
+4. Blocked: The thread is in the blocked state when the thread is waiting for the resource.
+5. Dead: The thread is in the dead state when the run() method completes.
