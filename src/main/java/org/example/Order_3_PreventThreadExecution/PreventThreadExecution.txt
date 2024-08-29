@@ -1,0 +1,66 @@
+// prevent thread execution
+
+We can prevent thread execution by using following methods:
+1. yield() method
+2. join() method
+3. sleep() method
+
+1. yield() method: public static native void yield()
+
+-- We can prevent thread execution by using the yield() method. The yield() method is a static method of the Thread class.
+It is used to pause the currently executing thread temporarily and give a chance to the remaining waiting threads of the same priority to execute.
+If there is no waiting thread or all the waiting threads have a lower priority then the same thread will continue its execution.
+
+
+-- what if there is higher priority thread is waiting rather than same priority while using yield method?
+In this case, the same thread will continue its execution. The waiting thread will not get the chance to execute.
+The waiting thread will get the chance only if all the waiting threads have the same priority or lower priority.
+
+-- If multiple threads are waiting with the same priority then the thread which thread will get the chance?
+The thread which will get the chance is decided by the thread scheduler.
+The thread scheduler is part of the JVM, and it is responsible to decide which thread will get the chance to execute.
+
+-- The thread which is yielded, when it will get the chance to execute again?
+The thread which is yielded will get the chance to execute again when the thread scheduler will give the chance to it.
+
+Native method:
+The yield() method is a native method. It is implemented in the native language like C or C++.
+The yield() method is implemented in the native language because it is related to the thread scheduler which is part of the JVM.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
