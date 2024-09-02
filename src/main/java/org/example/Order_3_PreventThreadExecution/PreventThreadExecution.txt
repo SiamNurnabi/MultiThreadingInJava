@@ -5,7 +5,25 @@ We can prevent thread execution by using following methods:
 2. join() method
 3. sleep() method
 
-1. yield() method: public static native void yield()
+//  +----------------+----------------+----------------+----------------+
+//  | Properties                | yield()        | join()         | sleep()        |
+//  +----------------+----------------+----------------+----------------+
+//  | Purpose                   | To pause the currently executing thread temporarily and give a chance to the remaining waiting threads of the same priority to execute. | To pause the currently executing thread until the thread on which it is called is dead. | To pause the currently executing thread for the specified time in milliseconds. |
+//  | Overloaded methods        | No             | Yes            | Yes            |
+//  | Final method              | No             | Yes            | No             |
+//  | Native method             | Yes            | Yes            | Yes            |
+//  | Static method             | Yes            | No             | Yes            |
+//  | Throws InterruptedException | No             | Yes            | Yes            |
+//  +----------------+----------------+----------------+----------------+
+
+
+*** Every join() and sleep() methods throws InterruptedException which is a checked exception. So we have to handle it
+using try-catch block or throws keyword. If we don't handle it, the program will not compile. It will throw a compile-time error.
+
+1. yield() method:
+
+public static native void yield()
+
 
 -- We can prevent thread execution by using the yield() method. The yield() method is a static method of the Thread class.
 It is used to pause the currently executing thread temporarily and give a chance to the remaining waiting threads of the same priority to execute.
@@ -29,6 +47,12 @@ The yield() method is implemented in the native language because it is related t
 
 
 2. join() method:
+
+public final void join() throws InterruptedException  // It will wait until the thread on which it is called is dead.
+public final void join(long millis) throws InterruptedException  // It will wait for the specified time in milliseconds.
+public final void join(long millis, int nanos) throws InterruptedException  // It will wait for the specified time in milliseconds and nanoseconds.
+
+
 -- We can prevent thread execution by using the join() method. The join() method is a non-static method of the Thread class.
 It is used to pause the currently executing thread until the thread on which it is called is dead.
 If the thread on which join() method is called is dead then the currently executing thread will continue its execution.
@@ -39,20 +63,27 @@ The currently executing thread will not continue its execution until the thread 
 -- If the thread on which join() method is called is dead then the currently executing thread will continue its execution.
 The currently executing thread will not wait.
 
+3. sleep() method:
+
+public static native void sleep(long millis) throws InterruptedException // It will wait for the specified time in milliseconds.
+public static void sleep(long millis, int nanos) throws InterruptedException // It will wait for the specified time in milliseconds and nanoseconds.
+
+
+If a thread don't want to perform any operation for a particular amount of time then we should go for sleep method.
+-- We can prevent thread execution by using the sleep() method. The sleep() method is a static method of the Thread class.
+It is used to pause the currently executing thread for the specified time in milliseconds.
+After the specified time, the thread will get the chance to execute.
 
 
 
+How a thread can interrupt another thread?
+-- A thread can interrupt another thread by using the interrupt() method. The interrupt() method is a non-static method of the Thread class.
+It is used to interrupt the currently executing thread. If the thread is in the sleeping or waiting state then it will come out of that state.
+If the thread is in the running state then it will be interrupted after completing its execution.
 
 
-
-
-
-
-
-
-
-
-
+A thread can interrupt a sleeping thread or waiting thread by using the interrupt() method of the Thread class.
+public void interrupt()  // It is used to interrupt the currently executing thread.
 
 
 

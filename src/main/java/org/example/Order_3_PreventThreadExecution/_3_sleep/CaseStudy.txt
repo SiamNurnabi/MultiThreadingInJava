@@ -1,0 +1,11 @@
+Case-1 :
+If the child thread is not in sleeping or waiting state, then interrupt() method will not interrupt the child thread.
+It will only interrupt the child thread if it is in sleeping or waiting state.
+Case-2:
+will the interrupt call be wasted if the child thread is not in sleeping or waiting state?
+No, the interrupt call will not be wasted. It will be stored in the child thread. When the child thread enters into sleeping or waiting state, then the interrupt call will be executed.
+If the target thread never enters into sleeping or waiting state in its lifetime, then the interrupt call will not be executed. This is the only situation where the interrupt call will be wasted.
+
+Note::
+When we call interrupt() method on a thread, if the target thread is not in sleeping or waiting state, then there is no impact of interrupt call immediately.
+The interrupt call will be stored in the thread. When the target thread enters into sleeping or waiting state, then the interrupt call will be executed.
