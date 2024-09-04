@@ -1,0 +1,66 @@
+Case-1:
+        Display d1 = new Display();
+        Display d2 = new Display();
+        MyThread t1 = new MyThread(d1, "Taskin");
+        MyThread t2 = new MyThread(d2, "Shariful");
+        t1.start();
+        t2.start();
+Even though, wish method is synchronized, we are not getting proper output.
+Because, we are creating two Display objects. So, two threads are working on two different objects.
+
+Conclusion: If multiple threads are working on multiple objects, then synchronization is not required.
+If multiple threads are working on the same object, then synchronization is required.
+
+For example: transaction on a join account. If multiple threads are working on the same account, then synchronization is required.
+
+
+Case-2: If the method declared as static synchronized, then the lock will be on the class level.
+So, only one thread is allowed to execute the static synchronized method on the class level.
+So the output will be proper for both multiple threads working on the same object and multiple threads working on multiple objects.
+
+Every class in java has a unique lock object. Which is nothing but class level lock.
+If any thread wants to execute a static synchronized method on the given class, then the thread has to acquire the class level lock of that class.
+Once the thread has acquired the class level lock, then it is allowed to execute any static synchronized method on that class.
+Once method execution is completed, the thread will release the class level lock automatically. Acquiring and releasing class level lock is taken care by JVM internally. We are not responsible to acquire and release the class level lock explicitly.
+
+Case-3: If the method declared as synchronized, then the lock will be on the object level.
+So, only one thread is allowed to execute the synchronized method on the object level.
+So the output will be proper for both multiple threads working on the same object but not for multiple threads working on multiple objects.
+
+Case-4:
+
+class X{
+    static synchronized void m1(){
+        // 1000 lines of code
+    }
+    static synchronized void m2(){
+        // 1000 lines of code
+    }
+    static void m3(){
+            // 1000 lines of code
+        }
+    synchronized void m4(){
+            // 1000 lines of code
+        }
+    void m5(){
+        // 1000 lines of code
+    }
+}
+
+Create an object of class x.
+        Thread t1 came to execute m1() method.  // Allowed
+        While executing m1() method by t1, another thread t2 came to execute m1() method. // Not allowed
+        t3 came to execute m2() method. // Not allowed
+        t4 came to execute m3() method. // Allowed
+        t5 came to execute m4() method. // Allowed.
+        t6 came to execute m5() method. // Allowed
+
+
+While a thread executing static synchronized method on a given class, the remaining threads are not allowed to execute any static synchronized method simultaneously on the same class.
+But the remaining threads are allowed to execute following methods simultaneously on the same class:
+1. static method
+2. synchronized instance method
+3. non-synchronized method / normal instance method
+
+
+need to start after 30 min

@@ -1,0 +1,95 @@
+Synchronization is the process of allowing only one thread to execute the synchronized method on the given object.
+Synchronized is a modifier applicable only for Methods and Blocks but not for Classes and Variables.
+
+If multiple threads are trying to operate simultaneously on the same object then there may be a chance of data inconsistency problem.
+To overcome this problem, we should go for Synchronization.
+If a method or block is declared as synchronized then at a time only one thread is allowed to execute that synchronized method or block on the given object.
+So that data inconsistency problem will be resolved.
+
+Advantages of Synchronization using Synchronized keyword:
+1. We can prevent data inconsistency problem.
+2. We can prevent deadlock situation.
+
+Disadvantages of Synchronization:
+1. Increases waiting time of threads. It increases the waiting time of threads and creates performance problems.
+
+Hence, if there is no specific requirement, it is not recommended to use Synchronized keyword.
+
+Example:
+A public telephone booth with a lock is an example of synchronization. Only one person can enter the booth and use the phone at a time.
+If the booth is locked, the person has to wait until the booth is unlocked.
+
+Internally, Synchronization is implemented by using Locks concept.
+Every object in Java has a unique lock. Whenever we are using synchronized keyword, then the lock concept will come into the picture.
+If a thread wants to execute a synchronized method on the given object, then the thread has to acquire the lock of that object.
+Once the thread has acquired the lock, then it is allowed to execute any synchronized method on that object.
+Once method execution is completed, the thread will release the lock automatically.
+Acquiring and releasing lock is taken care by JVM internally. We are not responsible to acquire and release the lock explicitly.
+
+
+
+class x{
+    synchronized void m1(){
+        // 1000 lines of code
+    }
+    synchronized void m2(){
+        // 1000 lines of code
+    }
+    void m3(){
+        // 1000 lines of code
+    }
+}
+
+Create an object of class x.
+        Thread t1 came to execute m1() method. // Allowed
+        While executing m1() method by t1, another thread t2 came to execute m1() method. // Not allowed
+        t3 came to execute m2() method. // Not allowed
+        t4 came to execute m3() method. // Allowed
+
+Lock concept is implemented based on the object but not based on the method.
+While a thread is executing synchronized method on a given object, the remaining threads are not allowed to execute any synchronized method simultaneously on the same object.
+But the remaining threads are allowed to execute non-synchronized methods simultaneously on the same object.
+
+
+For every object there is two areas:
+1. Normal Area (Non-Synchronized Area) - Remaining threads are allowed to execute non-synchronized methods simultaneously on the same object.
+2. Synchronized Area - Only one thread is allowed to execute synchronized methods on the same object.
+
+Wherever we are performing update operation, where state of the object is changing, we should go for synchronization.
+For example, deposit operation in ATM is an update operation. So, we should go for synchronization.
+Book ticket operation in Reservation System is an update operation. So, we should go for synchronization.
+
+Wherever we are performing read operation, where state of the object is not changing, we should not go for synchronization.
+For example, check balance operation in ATM is a read operation. So, we should not go for synchronization.
+Check availability operation in Reservation System is a read operation. So, we should not go for synchronization.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
