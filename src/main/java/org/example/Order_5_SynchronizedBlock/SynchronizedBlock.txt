@@ -1,0 +1,52 @@
+Total
+
+
+------------------------          -------------------------
+                         --------
+                         --------
+------------------------  BRIDGE  -------------------------
+Shimla Bazar                                       BoroBaria
+
+Total 6 hour time is required to travel from Shimla Bazar to BoroBaria or vice-versa.
+At a time only one vehicle can pass through the bridge. If a vehicle is passing through the bridge then no other vehicle can pass through the bridge.
+
+Suggested firstly, when a vehicle is travelling from Shimla Bazar to BoroBaria, then no other vehicle can travel from BoroBaria to Shimla Bazar or vice-versa.
+Then per day 4 vehicles can travel from Shimla Bazar to BoroBaria or vice-versa.
+
+Suggested later, multiple vehicles can travel from Shimla Bazar to the bridge or vice-versa. But only one vehicle can pass through the bridge at a time.
+After passing through the bridge, multiple vehicles can travel from the bridge to BoroBaria or vice-versa.
+
+
+
+If very few lines of code then it is not recommended to declare entire method as synchronized. We have to enclose those few lines of the code by using synchronized block.
+
+The main advantages of synchronized block over synchronized method is:
+It reduces waiting time of threads and improves performance of the application.
+
+Declare of synchronized block:
+1. To get lock of current object.
+
+synchronized(this){
+------
+------
+}
+If a thread got lock of current object then only it is allowed to execute this area.
+
+2. To get lock of particular object 'x'.
+
+synchronized(x){
+-------
+-------
+}
+
+If a thread got the lock of particular object 'x'.
+Then only it is allowed to execute the area.
+
+2. To get lock of the class level.
+
+synchronized(Display.class){
+-------
+-------
+}
+If a thread got class level lock of Display class.
+Then only it is allowed to execute this area.

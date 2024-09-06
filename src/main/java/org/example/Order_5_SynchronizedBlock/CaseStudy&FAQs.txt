@@ -1,0 +1,45 @@
+Case-1:
+Lock concept is applicable for object type and class type but not for primitive type.
+Hence, we can't pass primitive type as argument to synchronized block.
+Otherwise we will get compile time error.
+
+Case-2:
+A thread can acquire multiple locks. how? By using synchronized block.
+class x{
+    public synchronized void m1(){
+                        // Here thread acquires lock of object x
+        Y y = new Y();
+        synchronized(y){
+                        // Here thread acquires lock of object y
+            Z z = new Z();
+            synchronized(z){
+                        // Here thread acquires lock of object z
+                // some code
+                        // So here thread acquires lock of object x, y and z
+            }
+        }
+    }
+}
+
+
+
+
+FAQs:
+1. What is synchronized keyword and where we can use it?
+2. What is the difference between synchronized method and synchronized block?
+3. Explain advantages and disadvantages of synchronized keyword.
+4. What is Race Condition and how to resolve it?
+- if multiple threads are operating on same object and trying to update the same object then there is a chance of data inconsistency problem.
+  This problem is called race condition. We can resolve this problem by using synchronized keyword.
+5. What is Object lock and when it is required?
+6. What is Class lock and when it is required?
+7. What is the difference between Object lock and Class lock?
+8. What is the advantage of synchronized block over synchronized method?
+- In synchronized block, we can lock only required part of the method. Hence, remaining part of the method can be
+  accessed by multiple threads simultaneously. Performance will be improved.
+9. What is the disadvantage of synchronized block over synchronized method?
+- In synchronized block, we have to write more code compared to synchronized method.
+10. Is a thread can acquire multiple locks?
+- Yes, a thread can acquire multiple locks. how? By using synchronized block. From different objects, a thread acquire multiple locks.
+11. What is synchronized statement?
+- The statement present inside the synchronized method or synchronized block is called synchronized statement.
