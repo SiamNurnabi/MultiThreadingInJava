@@ -1,0 +1,70 @@
+Two threads can communicate with each other by using
+- wait(),
+- notify() and
+- notifyAll() methods.
+These methods are used to communicate between threads. The wait() method is used to pause the current thread and notify() or notifyAll() method is used to resume the thread.
+
+Example: Letter and postman
+
+
+Point-1
+The thread which is expecting update is called as waiting thread and responsible to call wait() method.
+The thread which is responsible to perform update, after performing update it is responsible to call notify method then
+the waiting thread will get the notification and continue its execution with those updated items.
+
+
+Point-2
+wait(), notify() and notifyAll() methods are present in Object class not in Thread class.
+So, every object in java has these methods. But why?
+Because thread can call these methods on any object.
+
+
+Point-3
+To call wait(), notify() and notifyAll() methods on any object, thread should be the owner of that object. That is, the thread should have the lock of that object.
+That means, these methods should be called from synchronized context only. Hence, these methods are called as synchronized methods.
+Otherwise, we will get runtime exception saying IllegalMonitorStateException.
+
+
+Point-4
+If a thread calls wait() method on an object, then
+- immediately the thread releases the lock of that object
+- will enter into waiting state.
+
+Point-5
+If a thread calls notify() method on an object, then
+- it releases the lock of that object but may not immediately. It may take some time. do some other work and then releases the lock of that object.
+
+Point-6
+Except wait(), notify() and notifyAll() methods, there is no other method which releases the lock of the object.
+Because if a thread calls wait() method on an object, then it releases the lock of that object and enters into waiting state.
+So, to get the lock of that object, some other thread should call notify() or notifyAll() method on that object and releases the lock of that object.
+Then only the waiting thread will get the lock of that object and continue its execution. Hence, these methods are called as inter-thread communication methods.
+
+
++----------------+-----------------------------+
+|    Method      |  Thread releases lock or not|
++----------------+-----------------------------+
+| yield()        |  No                         |
+| join()         |  No                         |
+| sleep()        |  No                         |
+| wait()         |  Yes                        |
+| notify()       |  Yes                        |
+| notifyAll()    |  Yes                        |
++----------------+-----------------------------+
+
+
+Which of the following are valid?
+1. If a thread calls wait() method on an object, it immediately enters into waiting state without releasing the lock of that object. (False)
+2. If a thread calls wait() method on an object, it releases the lock of that object but may not immediately. (False)
+3. If a thread calls wait() method on an object, it releases all the locks acquired by that thread and immediately enter into waiting state. (False)
+4. If a thread calls notify() method on an object, it immediately releases the lock of that particular object and enter into waiting state. (True)
+
+5. If a thread calls notify() method on an object, it immediately releases the lock of that object. (False) It releases the lock but may not immediately.
+6. If a thread calls notify() method on an object, it releases the lock of that object but may not immediately. (True)
+
+
+After releasing the lock of the object some other thread should call notify() or notifyAll() method on that object. How that thread will get the lock of that object?
+Where Released lock will be stored?
+- Released lock will be stored in the lock pool.
+- The thread which is waiting for the lock of that object will get the lock of that object from the lock pool.
+- Then only the waiting thread will get the lock of that object and continue its execution.
