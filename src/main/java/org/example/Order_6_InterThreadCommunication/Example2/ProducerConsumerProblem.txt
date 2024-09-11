@@ -1,0 +1,30 @@
+Producer thread is responsible to produce item in the queue and
+Consumer thread is responsible to consume item from the queue.
+
+If the queue is full, then the producer thread will wait until the consumer thread consumes the item from the queue.
+If the queue is empty, then the consumer thread will call wait() method and enter into waiting state until the producer thread produces the item in the queue.
+After producing items to the queue the producer is responsible to notify the consumer thread to consume the item from the queue.
+Waiting thread will get the notification and continue its execution with the updated items.
+
+
+class Producer{
+    produce(){
+        synchronized(queue){
+            produce items in the queue
+            q.notify();
+        }
+    }
+}
+
+
+class Consumer{
+    consume(){
+        synchronized(queue){
+            if(queue is empty){
+                q.wait();
+            }else{
+                consume items from the queue
+            }
+            consume items from the queue
+    }
+}
