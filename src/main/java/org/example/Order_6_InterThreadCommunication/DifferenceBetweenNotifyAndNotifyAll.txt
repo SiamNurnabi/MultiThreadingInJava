@@ -1,0 +1,36 @@
+- We can use notify method to give the notification to only one waiting thread.
+- If multiple threads are waiting, then only one thread will get the notification and the remaining threads will be in waiting state for further notification.
+- Which thread will get the notification is decided by the JVM and we can't predict it.
+- If we use notifyAll method, then all the waiting threads will get the notification, and they will come out of the waiting state and continue their execution.
+
+
+
+
+We can assume the situation in the bus stand:
+- Let's say, there are 200 people waiting for their buses. There are 4 buses.
+If the first bus comes, then only 50 people can get into the bus and the remaining 150 people have to wait for the next bus.
+All the 50 people will get the notification that the first bus has come.
+
+- While boarding on the first bus, 50 people will be on the bus, but they will get the chance to board the bus one by one not all at once.
+
+
+         _______________________                     ______________________
+         |Another waiting state |  <--------------- | Waiting State       |   100 waiting threads
+         _______________________                     ______________________
+                                                               |
+                                                              /|\
+                                                             / | \
+                        obj.wait(); => 60 threads              |           obj1.notifyAll(); => 60 threads //
+                        obj.wait(); => 40 threads              |
+                                                               |
+                                                     __________|___________
+                                                     | Running State       |
+                                                     ______________________
+
+
+- We can use notifyAll() method to give the notification for all the waiting threads of a particular object.
+- Even though multiple threads will get the notification, only one thread will get the lock and remaining threads will be in waiting state for the lock.
+- Execution will be performed one by one because threads will need lock and only one thread will get the lock at a time.
+
+Note: On which object we are calling the wait() method, thread requires the lock of that object.
+For example, if we are calling wait() method on s1, then we have to get lock of s1 object but not s2 object.
