@@ -1,0 +1,5 @@
+Long waiting of a thread where waiting never end is called deadlock.
+Long waiting of a thread where waiting never ends at certain point of time is called starvation.
+For example:
+ Low priority thread waiting for long time to get CPU time is called starvation.
+ Low priority thread has to wait until completing all high priority threads. It may be a long waiting but ends at certain point of time. This is called starvation.
