@@ -1,0 +1,41 @@
+The threads which are running in the background is called Daemon Threads.
+Example:
+- Garbage Collector
+- Finalizer
+- Signal Dispatcher
+- Attach Listener
+
+Scenario:
+        Let's assume a real-time scenario where we are watching a movie. In the movie, the hero is fighting with the villain.
+In the middle of the fight, the villain is killed by the hero. After killing the villain, the hero will not wait for the villain to get up.
+Instead, the hero will continue his fight with other villains. This is the same scenario with Daemon Threads.
+Daemon Threads will not wait for the completion of the main thread. Instead, Daemon Threads will continue their execution.
+If the main hero is killed, then automatically there will be no use of the villain. Hence, Daemon Threads will be terminated automatically.
+
+Objectives/Purpose of Daemon Threads:
+- To provide support for non-daemon(Main thread) threads. For instance, main thread runs with low memory,
+then JVM runs garbage collector thread will run to destroy useless objects and number of free memory will be increased.
+With this, free memory will be available for main thread to run.
+- Usually daemon threads have low priority. But based on the requirement, Daemon threads will run higher priority than main thread.
+
+
+Methods:
+- We can check whether the thread is daemon or not by using isDaemon() method.
+public boolean isDaemon()
+
+- We can set the thread as daemon or non-daemon by using setDaemon() method of Thread class.
+public void setDaemon(boolean b)
+
+**But changing the daemon nature of the thread should be done before starting the thread.
+After starting a thread if we try to change the nature to daemon, we will get IllegalThreadStateException.
+
+Default nature of the thread:
+- By default, main thread is non-daemon thread and all remaining threads daemon nature is inherited from parent to child thread.
+- If parent thread is daemon, then child thread is also daemon.
+- If parent thread is non-daemon, then child thread is also non-daemon.
+
+Note: Is it possible to change the daemon nature of the main thread?
+It is impossible to change the daemon nature of the main thread. Because main thread is already started by JVM at the beginning of the program.
+Hence, we can't change the daemon nature of the main thread.
+
+**Whenever the last non-daemon thread terminates, automatically all daemon threads will be terminated irrespective of their state.
