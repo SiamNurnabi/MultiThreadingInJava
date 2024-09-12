@@ -1,0 +1,5 @@
+If two threads are waiting for each other to release the lock, then the condition is called a deadlock.
+In this case, both threads will wait forever for each other to release the lock, and the program will never terminate. This situation is called a deadlock.
+
+Synchronized keyword is the only reason for deadlock situation. Hence, we should be very careful while using synchronized keyword.
+There are no resolution techniques for deadlock. But several prevention techniques are available to avoid deadlock.
